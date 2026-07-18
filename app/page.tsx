@@ -1,3 +1,4 @@
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 type Article = {
@@ -234,7 +235,7 @@ export default function Home() {
           <button className="grid size-8 place-items-center rounded text-[var(--ink)] hover:bg-[#f0f0ef] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--right)]" aria-label="Open navigation"><span className="size-5"><MenuIcon /></span></button>
           <Brand />
           <nav aria-label="Primary navigation" className="ml-5 hidden h-full items-center gap-6 text-[10px] font-medium text-[#25262b] md:flex"><a className="hover:text-[var(--right)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--right)]" href="#top">Home</a><a className="hover:text-[var(--right)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--right)]" href="#for-you">For You</a><a className="hover:text-[var(--right)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--right)]" href="#local">Local</a><a className="hover:text-[var(--right)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--right)]" href="#blindspot">Blindspot</a></nav>
-          <div className="ml-auto flex items-center gap-2"><button className="h-8 rounded-[3px] bg-[var(--ink)] px-4 text-[9px] font-semibold text-white transition hover:bg-[#2e3037] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--right)] focus-visible:ring-offset-2">Subscribe</button><button className="hidden h-8 rounded-[3px] border border-[#bfc1c7] px-4 text-[9px] font-semibold hover:bg-[#f5f5f4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--right)] focus-visible:ring-offset-2 sm:block">Login</button></div>
+          <div className="ml-auto flex items-center gap-2"><button className="h-8 rounded-[3px] bg-[var(--ink)] px-4 text-[9px] font-semibold text-white transition hover:bg-[#2e3037] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--right)] focus-visible:ring-offset-2">Subscribe</button><Show when="signed-out"><SignUpButton><button className="hidden h-8 rounded-[3px] border border-[#bfc1c7] px-3 text-[9px] font-semibold hover:bg-[#f5f5f4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--right)] focus-visible:ring-offset-2 sm:block">Sign up</button></SignUpButton><SignInButton><button className="hidden h-8 rounded-[3px] border border-[#bfc1c7] px-3 text-[9px] font-semibold hover:bg-[#f5f5f4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--right)] focus-visible:ring-offset-2 sm:block">Login</button></SignInButton></Show><Show when="signed-in"><UserButton /></Show></div>
         </div>
       </header>
 
