@@ -9,8 +9,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Biasly — Design System",
-  description: "The visual language for balanced news analysis.",
+  title: "Biasly — Balanced News Analysis",
+  description: "Compare news coverage and AI-estimated political framing in one place.",
 };
 
 export default function RootLayout({
