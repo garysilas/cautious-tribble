@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type Article = {
   id: string;
   category: string;
@@ -197,16 +199,18 @@ function BiasMeter({ article }: { article: Article }) {
 function ArticleCard({ article }: { article: Article }) {
   return (
     <article className="group overflow-hidden rounded-[5px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow-sm)]">
-      <div className="relative aspect-[16/9] overflow-hidden bg-[#d8d8d3]">
-        <img className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]" src={article.image} alt={article.imageAlt} width="900" height="506" />
-        <span className="absolute right-2 top-2 grid size-[18px] place-items-center rounded-full border border-white/90 bg-black/35 text-white"><InfoIcon /></span>
-      </div>
-      <div className="p-3">
-        <p className="text-[9px] font-semibold tracking-[-0.015em] text-[#30323a]">{article.category} <span className="text-[#91939c]">·</span> {article.region}</p>
-        <h2 className="mt-1.5 min-h-[42px] text-[13px] font-bold leading-[1.22] tracking-[-0.035em] text-[var(--ink)]">{article.title}</h2>
-        <BiasMeter article={article} />
-        <p className="mt-2 text-[9px] font-medium text-[#43454d]">{article.sources} sources</p>
-      </div>
+      <Link href={`/news/${article.id}`} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[var(--right)]" aria-label={`Read ${article.title}`}>
+        <div className="relative aspect-[16/9] overflow-hidden bg-[#d8d8d3]">
+          <img className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]" src={article.image} alt={article.imageAlt} width="900" height="506" />
+          <span className="absolute right-2 top-2 grid size-[18px] place-items-center rounded-full border border-white/90 bg-black/35 text-white"><InfoIcon /></span>
+        </div>
+        <div className="p-3">
+          <p className="text-[9px] font-semibold tracking-[-0.015em] text-[#30323a]">{article.category} <span className="text-[#91939c]">·</span> {article.region}</p>
+          <h2 className="mt-1.5 min-h-[42px] text-[13px] font-bold leading-[1.22] tracking-[-0.035em] text-[var(--ink)]">{article.title}</h2>
+          <BiasMeter article={article} />
+          <p className="mt-2 text-[9px] font-medium text-[#43454d]">{article.sources} sources</p>
+        </div>
+      </Link>
     </article>
   );
 }
